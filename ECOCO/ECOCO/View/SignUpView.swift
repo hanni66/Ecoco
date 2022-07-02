@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SignUpView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("회원가입 View")   // 소셜 로그인 사용시 없어질 수 있음.
     }
 }
 
