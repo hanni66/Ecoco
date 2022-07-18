@@ -6,6 +6,9 @@
 //
 
 import SwiftUI
+import MapKit
+
+// swiftUI mapkit 하는 방법 배워서 넣기
 
 struct MapView: View {
     var body: some View {
