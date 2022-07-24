@@ -11,15 +11,20 @@ import MapKit
 // swiftUI mapkit 하는 방법 배워서 넣기
 
 struct MapView: View {
+    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.5666791, longitude: 126.9782914), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
     var body: some View {
         VStack{
             Text("MapView")
             Text("검색")
                 .frame(width: 350, height: 40)
                 .background(Color.gray)
-            Rectangle()
-                .fill(Color.gray)
-                .frame(width: 350, height: 600)
+            VStack{
+//                Rectangle()
+//                    .fill(Color.gray)
+//                    .frame(width: 350, height: 600)
+                Map(coordinateRegion: $region, showsUserLocation: true, userTrackingMode: .constant(.follow))
+            }
+            
         }
     }
 }
