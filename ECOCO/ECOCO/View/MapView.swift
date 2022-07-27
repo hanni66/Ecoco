@@ -12,10 +12,15 @@ import MapKit
 
 struct MapView: View {
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.5666791, longitude: 126.9782914), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
+    @State var searchText: String = ""
+    
     var body: some View {
         VStack{
             Text("MapView")
-            Text("검색")
+//            Text("검색")
+//                .frame(width: 350, height: 40)
+//                .background(Color.gray)
+            TextField("검색", text: $searchText)
                 .frame(width: 350, height: 40)
                 .background(Color.gray)
             VStack{
