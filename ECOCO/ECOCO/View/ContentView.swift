@@ -7,25 +7,60 @@
 
 import SwiftUI
 
+struct TodoList: Identifiable {
+    let id = UUID()
+    var content: String
+}
+
+struct plusList: Identifiable {
+    let id = UUID()
+    var content: String
+}
+
 struct ContentView: View {
+    
+    private var todoListText = [
+        TodoList(content: "1"),
+        TodoList(content: "2"),
+        TodoList(content: "3")
+    ]
+    
+    private var plusListText = [
+        plusList(content: "더보기 1"),
+        plusList(content: "더보기 2"),
+        plusList(content: "더보기 3")
+    ]
+    
     var body: some View {
         VStack{
             Text("ContentView")
             
             Text("오늘의 실천")
             List{
-                Text("1")
-                Text("2")
-                Text("3")
+                ForEach(0..<todoListText.count, id: \.self) { i in
+                    HStack {
+                        Button(action: {}, label: {
+                            Image(systemName: "square")
+                        })
+                        Text(todoListText[i].content)
+                    }
+                }
             }
             
             Text("더보기")
             List{
-                Text("1")
-                Text("2")
-                Text("3")
-                Text("4")
-                Text("5")
+                ForEach(0..<plusListText.count, id: \.self) { i in
+                    HStack {
+                        Button(action: {}, label: {
+                            Image(systemName: "square")
+                        })
+                        Text(plusListText[i].content)
+                        Spacer()
+                        Button(action: {}, label: {
+                            Image(systemName: "trash")
+                        })
+                    }
+                }
             }
         }
     }
