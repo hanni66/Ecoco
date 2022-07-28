@@ -12,12 +12,18 @@ struct MainView: View {
         VStack{
             Text("MainView")
             ScrollView{
-                ForEach(0..<3) { index in
-                    Text("hi")
-                    Circle()
-                        .fill(Color.green)
-                        .frame(width: 150, height: 30)
-                }
+                Text("오늘의 추천")
+                Rectangle()
+                    .fill(Color.gray)
+                    .frame(width: 350, height: 250)
+                Text("내 주변 가게")
+                Rectangle()
+                    .fill(Color.gray)
+                    .frame(width: 350, height: 250)
+                Text("참여 현황")
+                Rectangle()
+                    .fill(Color.gray)
+                    .frame(width: 350, height: 250)
             }
         }
     }
