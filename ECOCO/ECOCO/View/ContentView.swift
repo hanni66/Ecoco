@@ -10,6 +10,7 @@ import SwiftUI
 struct TodoList: Identifiable {
     let id = UUID()
     var content: String
+    var ckecked: Bool
 }
 
 struct plusList: Identifiable {
@@ -18,12 +19,7 @@ struct plusList: Identifiable {
 }
 
 struct ContentView: View {
-    
-    private var todoListText = [
-        TodoList(content: "1"),
-        TodoList(content: "2"),
-        TodoList(content: "3")
-    ]
+    @State private var todoLists = [TodoList]()
     
     private var plusListText = [
         plusList(content: "더보기 1"),
@@ -31,18 +27,46 @@ struct ContentView: View {
         plusList(content: "더보기 3")
     ]
     
+    func appendTodoList() {
+        let addList = TodoList(content: todoString, checked: false)
+        
+        todoLists.append(addList)
+        todoStirng = ""
+    }
+
+    func toggleCheckedState(_ i: Int) {
+        todoLists[i].checked.toggle()
+    }
+    func deleteList(_ i: Int) {
+        todoLists.remove(at: i)
+    }
+    
     var body: some View {
         VStack{
             Text("ContentView")
             
             Text("오늘의 실천")
+            
+            TextField(
+                "실천 할 일",
+                text: $toDoString,
+                onCommit: {
+                    appendTodoList()
+                }
+            )
             List{
-                ForEach(0..<todoListText.count, id: \.self) { i in
+                ForEach(0..<todoLists.count, id: \.self) { i in
                     HStack {
-                        Button(action: {}, label: {
-                            Image(systemName: "square")
+                        Button(action: {
+                            toggleCheckedState(i)
+                        }, label: {
+                            Image(systemName:
+                                todoLists[i].checked == true
+                                ? "checked.square"
+                                : "square"
+                            )
                         })
-                        Text(todoListText[i].content)
+                        Text(todoLists[i].content)
                     }
                 }
             }
