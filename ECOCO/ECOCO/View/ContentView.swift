@@ -20,7 +20,7 @@ struct plusList: Identifiable {
 
 struct ContentView: View {
     @State private var todoLists = [TodoList]()
-    
+    // toogle 수정필요
     private var plusListText = [
         plusList(content: "더보기 1"),
         plusList(content: "더보기 2"),
