@@ -49,6 +49,7 @@ struct ContentView: View {
             
             TextField(
                 "실천 할 일",
+                // toDoString 해결 필요
                 text: $toDoString,
                 onCommit: {
                     appendTodoList()
